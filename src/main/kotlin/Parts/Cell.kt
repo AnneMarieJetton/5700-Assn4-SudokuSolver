@@ -6,14 +6,20 @@ class Cell(_rowIndex: Int, _colIndex: Int,_puzzleSize: Int, _currentValue: Strin
     val rowIndex: Int = _rowIndex
     val colIndex: Int = _colIndex
     var boxIndex: Int = 0
-    val puzzleSize:Int = _puzzleSize
+    val puzzleSize: Int = _puzzleSize
 
     init {
-        createBoxIndex()
+//        createBoxIndex()
     }
 
-    private fun createBoxIndex(){
-
-    }
+//    private fun createBoxIndex(){
+//        var boxSize = Math.sqrt(puzzleSize.toDouble())
+//        var index = 0
+//
+//        for(){
+//
+//            index++
+//        }
+//    }
 
 }

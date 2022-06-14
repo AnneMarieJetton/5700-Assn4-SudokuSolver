@@ -63,6 +63,49 @@ class SudokuSolver (_sudokuPuzzleFile: File){
 
     }
 
+    private fun createBoxIndex(desiredRow: Int, desiredCol: Int): Int {
+        var boxSize = Math.sqrt(sudokuDimension.toDouble()).toInt()
+        var overallIndex = 0
+        var colIndex = 0
+        var rowIndex = 0
+        var boxIndex = 0
+        var boxDecisiveCounterRow = 0
+        var boxDecisiveCounterCol = 0
+        var forSomeGodForsakenReasonICantReturnInsideAForLoop = -1
+
+        sudokuPuzzleFile.forEachLine{
+            var splitLine = it.split(" ")
+            for (char in splitLine){
+                if(rowIndex == desiredRow && colIndex == desiredCol){
+                    forSomeGodForsakenReasonICantReturnInsideAForLoop = boxIndex
+                }
+                else{
+                    colIndex++
+                    boxDecisiveCounterCol++
+                    if(boxDecisiveCounterCol == boxSize){
+                        boxDecisiveCounterCol = 0
+                        boxIndex++
+                    }
+                    if (colIndex == sudokuDimension){
+                        colIndex = 0
+                        rowIndex++
+
+                        boxDecisiveCounterRow++
+                        if(boxDecisiveCounterRow == boxSize){
+                            boxDecisiveCounterRow = 0
+                        }
+                        else{
+                            boxIndex = boxIndex - (boxSize-1)
+                        }
+                    }
+                }
+                overallIndex++
+            }
+        }
+
+        return forSomeGodForsakenReasonICantReturnInsideAForLoop
+    }
+
 //    private fun setDimension(){
 //
 //    }
