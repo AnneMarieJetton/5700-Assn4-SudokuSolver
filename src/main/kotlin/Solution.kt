@@ -1,7 +1,7 @@
 import Parts.Cell
 
-class Solution(_sudokuSolution: MutableList<MutableList<Cell>>, _strategyCount: MutableList<Int>) {
-    var sudokuSolution: MutableList<MutableList<Cell>> = _sudokuSolution
+class Solution(_sudokuSolution: MutableList<Cell>, _strategyCount: MutableList<Int>) {
+    var sudokuSolution: MutableList<Cell> = _sudokuSolution
         private set
     var strategyCount: MutableList<Int> = _strategyCount
     var sudokuSolutionPrintable: String = ""
@@ -12,12 +12,15 @@ class Solution(_sudokuSolution: MutableList<MutableList<Cell>>, _strategyCount: 
     }
 
     private fun createPrintables(){
-        for(line in sudokuSolution){
-            for (cell in line){
-                sudokuSolutionPrintable = sudokuSolutionPrintable + cell.currentValue + " "
+        var index = 0
+        for(cell in sudokuSolution){
+            sudokuSolutionPrintable = sudokuSolutionPrintable + cell.currentValue + " "
+            index++
 
+            if (index.toDouble() == Math.sqrt(sudokuSolution.size.toDouble())) {
+                sudokuSolutionPrintable = sudokuSolutionPrintable + "\n"
+                index = 0
             }
-            sudokuSolutionPrintable = sudokuSolutionPrintable + "\n"
         }
 
         var methodNames = mutableListOf<String>()

@@ -4,6 +4,7 @@ interface SolveTemplate {
     //strategy?
 
     //Template
+    abstract fun runStrategy(sudokuCells: MutableList<Cell>): Boolean
 
     fun checkRow(){
 

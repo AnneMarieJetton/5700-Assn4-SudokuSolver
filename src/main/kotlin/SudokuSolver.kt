@@ -4,12 +4,15 @@ import Parts.Cell
 //import Strategies.OnlyOnePossibility
 import Strategies.*
 import java.io.File
+import java.util.ArrayDeque
 
 class SudokuSolver (_sudokuPuzzleFile: File){
     val sudokuPuzzleFile: File = _sudokuPuzzleFile
-    var sudokuCells = mutableListOf<Cell>()
+//    var sudokuCells = mutableListOf<Cell>()
+    var sudokuCells: MutableList<Cell>? = mutableListOf()
     var solutions = mutableListOf<Solution>()
     var sudokuDimension = 0
+    var strategyCount = mutableListOf<Int>()
 
     init {
         makeCells()
@@ -25,9 +28,62 @@ class SudokuSolver (_sudokuPuzzleFile: File){
         var onlyOnePossibility = OnlyOnePossibility()
         var guess = Guess()
 
-//        numbersFoundElsewhere
+        while(sudokuCells != null){
+            var changes = false
+            var puzzleStack = ArrayDeque<MutableList<Cell>>()
+            var strategyStack = ArrayDeque<Int>()
+
+            if(!numbersFoundElsewhere.runStrategy(sudokuCells!!)){
+                if(!duplicates.runStrategy(sudokuCells!!)){
+                    if (!onlyOnePossibility.runStrategy(sudokuCells!!)){
+                        if(!guess.runStrategy(sudokuCells!!)){
+                            if (puzzleStack.isEmpty())
+                                sudokuCells = null
+                            else {
+                                sudokuCells = puzzleStack.pop()
+                            }
+                        }
+                        else{
+                            changes = true
+                            strategyCount[3] = strategyCount[3] + 1
+                            puzzleStack.push(sudokuCells)
+                        }
+                    }
+                    else{
+                        changes = true
+                        strategyCount[2] = strategyCount[2] + 1
+                    }
+                }
+                else{
+                    changes = true
+                    strategyCount[1] = strategyCount[1] + 1
+                }
+            }
+            else{
+                changes = true
+                strategyCount[0] = strategyCount[0] + 1
+            }
+
+            if (changes == true){
+                if(sudokuCells?.let { sudokuIsSolved(it) } == true){
+                    solutions.add(Solution(sudokuCells!!, strategyCount))
+                }
+            }
+
+        }
 
         return solutions
+    }
+
+    fun sudokuIsSolved(puzzle: MutableList<Cell>): Boolean {
+        for (cell in puzzle){
+            if (cell.currentValue == "_"){
+                return false
+            }
+        }
+
+        return true
+
     }
 
     private fun checkSizeValidity(): Boolean {
@@ -66,7 +122,7 @@ class SudokuSolver (_sudokuPuzzleFile: File){
             var splitLine = line.split(" ").toMutableList()
             var col = 0
             for(char in splitLine){
-                sudokuCells.add(Cell(row, col, createBoxIndex(row, col), char, possibleValues))
+                sudokuCells?.add(Cell(row, col, createBoxIndex(row, col), char, possibleValues))
                 col++
             }
             row++
@@ -117,26 +173,10 @@ class SudokuSolver (_sudokuPuzzleFile: File){
         return forSomeGodForsakenReasonICantReturnInsideAForLoop
     }
 
-//    private fun setDimension(){
-//
-//    }
-
     private fun getCellRow(sudoku: MutableList<Cell>, size: Int, neededRowIndex: Int): MutableList<Cell> {
-//        var currentRowIndex = 0
-//        var cellIndexInCurrentRow = 0
+
         var returnableRow = mutableListOf<Cell>()
-//        for(cell in sudoku){
-//            if (currentRowIndex == neededRowIndex) {
-//                returnableRow.add(cell)
-//            }
-//            else{
-//                cellIndexInCurrentRow++
-//                if (cellIndexInCurrentRow == size){
-//                    cellIndexInCurrentRow = 0
-//                    currentRowIndex++
-//                }
-//            }
-//        }
+
         for(cell in sudoku){
             if(cell.colIndex == neededRowIndex){
                 returnableRow.add(cell)
@@ -147,19 +187,9 @@ class SudokuSolver (_sudokuPuzzleFile: File){
     }
 
     private fun getCellCol(sudoku: MutableList<Cell>, size: Int, neededColIndex: Int): MutableList<Cell> {
-//        var cellIndexInCurrentRow = 0
+
         var returnableCol = mutableListOf<Cell>()
-//        for(cell in sudoku){
-//            if(cellIndexInCurrentRow == neededColIndex){
-//                returnableCol.add(cell)
-//            }
-//            else{
-//                cellIndexInCurrentRow++
-//                if (cellIndexInCurrentRow == size){
-//                    cellIndexInCurrentRow = 0
-//                }
-//            }
-//        }
+
         for(cell in sudoku){
             if(cell.colIndex == neededColIndex){
                 returnableCol.add(cell)
@@ -170,13 +200,9 @@ class SudokuSolver (_sudokuPuzzleFile: File){
     }
 
     private fun getCellBox(sudoku: MutableList<Cell>, size: Int, neededBoxIndex: Int): MutableList<Cell> {
-//        var currentRowIndex = 0
-//        var cellIndexInCurrentRow = 0
+
         var returnableBox = mutableListOf<Cell>()
-//        var boxSize = Math.sqrt(size.toDouble())
-//        for (cell in sudoku){
-//
-//        }
+
         for(cell in sudoku){
             if (cell.boxIndex == neededBoxIndex){
                 returnableBox.add(cell)
