@@ -173,44 +173,44 @@ class SudokuSolver (_sudokuPuzzleFile: File){
         return forSomeGodForsakenReasonICantReturnInsideAForLoop
     }
 
-    private fun getCellRow(sudoku: MutableList<Cell>, size: Int, neededRowIndex: Int): MutableList<Cell> {
+//    private fun getCellRow(sudoku: MutableList<Cell>, size: Int, neededRowIndex: Int): MutableList<Cell> {
+//
+//        var returnableRow = mutableListOf<Cell>()
+//
+//        for(cell in sudoku){
+//            if(cell.colIndex == neededRowIndex){
+//                returnableRow.add(cell)
+//            }
+//        }
+//
+//        return returnableRow
+//    }
 
-        var returnableRow = mutableListOf<Cell>()
+//    private fun getCellCol(sudoku: MutableList<Cell>, size: Int, neededColIndex: Int): MutableList<Cell> {
+//
+//        var returnableCol = mutableListOf<Cell>()
+//
+//        for(cell in sudoku){
+//            if(cell.colIndex == neededColIndex){
+//                returnableCol.add(cell)
+//            }
+//        }
+//
+//        return returnableCol
+//    }
 
-        for(cell in sudoku){
-            if(cell.colIndex == neededRowIndex){
-                returnableRow.add(cell)
-            }
-        }
-
-        return returnableRow
-    }
-
-    private fun getCellCol(sudoku: MutableList<Cell>, size: Int, neededColIndex: Int): MutableList<Cell> {
-
-        var returnableCol = mutableListOf<Cell>()
-
-        for(cell in sudoku){
-            if(cell.colIndex == neededColIndex){
-                returnableCol.add(cell)
-            }
-        }
-
-        return returnableCol
-    }
-
-    private fun getCellBox(sudoku: MutableList<Cell>, size: Int, neededBoxIndex: Int): MutableList<Cell> {
-
-        var returnableBox = mutableListOf<Cell>()
-
-        for(cell in sudoku){
-            if (cell.boxIndex == neededBoxIndex){
-                returnableBox.add(cell)
-            }
-        }
-
-        return returnableBox
-    }
+//    private fun getCellBox(sudoku: MutableList<Cell>, size: Int, neededBoxIndex: Int): MutableList<Cell> {
+//
+//        var returnableBox = mutableListOf<Cell>()
+//
+//        for(cell in sudoku){
+//            if (cell.boxIndex == neededBoxIndex){
+//                returnableBox.add(cell)
+//            }
+//        }
+//
+//        return returnableBox
+//    }
 
 
 }
