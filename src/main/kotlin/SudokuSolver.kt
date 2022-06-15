@@ -1,4 +1,8 @@
 import Parts.Cell
+//import Strategies.Duplicates
+//import Strategies.NumbersFoundElsewhere
+//import Strategies.OnlyOnePossibility
+import Strategies.*
 import java.io.File
 
 class SudokuSolver (_sudokuPuzzleFile: File){
@@ -15,6 +19,13 @@ class SudokuSolver (_sudokuPuzzleFile: File){
         if(!checkSizeValidity()){
             return solutions
         }
+
+        var numbersFoundElsewhere = NumbersFoundElsewhere()
+        var duplicates = Duplicates()
+        var onlyOnePossibility = OnlyOnePossibility()
+        var guess = Guess()
+
+//        numbersFoundElsewhere
 
         return solutions
     }
@@ -55,7 +66,7 @@ class SudokuSolver (_sudokuPuzzleFile: File){
             var splitLine = line.split(" ").toMutableList()
             var col = 0
             for(char in splitLine){
-                sudokuCells.add(Cell(row, col, sudokuDimension, char, possibleValues))
+                sudokuCells.add(Cell(row, col, createBoxIndex(row, col), char, possibleValues))
                 col++
             }
             row++

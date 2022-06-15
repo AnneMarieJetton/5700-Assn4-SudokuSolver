@@ -1,25 +1,14 @@
 package Parts
 
-class Cell(_rowIndex: Int, _colIndex: Int,_puzzleSize: Int, _currentValue: String, _possibleValues: MutableList<String>) {
+class Cell(_rowIndex: Int, _colIndex: Int,_BoxIndex: Int, _currentValue: String, _possibleValues: MutableList<String>) {
     var currentValue: String = _currentValue
     var possibleValues: MutableList<String> = _possibleValues
     val rowIndex: Int = _rowIndex
     val colIndex: Int = _colIndex
-    var boxIndex: Int = 0
-    val puzzleSize: Int = _puzzleSize
+    var boxIndex: Int = _BoxIndex
 
     init {
-//        createBoxIndex()
-    }
 
-//    private fun createBoxIndex(){
-//        var boxSize = Math.sqrt(puzzleSize.toDouble())
-//        var index = 0
-//
-//        for(){
-//
-//            index++
-//        }
-//    }
+    }
 
 }

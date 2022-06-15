@@ -1,4 +1,6 @@
 package Strategies
 
-class OnlyOnePossibility {
+import SolveTemplate
+
+class OnlyOnePossibility: SolveTemplate {
 }

@@ -1,6 +1,0 @@
-interface SolutionStrategyAndTemplate {
-    //strategy?
-
-    //Template
-
-}
