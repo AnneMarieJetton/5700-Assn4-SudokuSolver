@@ -42,54 +42,48 @@ class NumbersFoundElsewhere: SolveTemplate()  {
     }
 
     override fun updateCellOptions(cell: Cell, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
-        TODO("Not yet implemented")
+        var changed = false
+
+        if (cell.currentValue != "_"){
+            cell.possibleValues.clear()
+        }
+        else {
+            for (otherCell in row){
+                if (otherCell.currentValue != "_"){
+                    if(cell.possibleValues.contains(otherCell.currentValue)) {
+                        cell.possibleValues.remove(otherCell.currentValue)
+                        changed = true
+                    }
+                }
+            }
+            for (otherCell in col){
+                if (otherCell.currentValue != "_"){
+                    if(cell.possibleValues.contains(otherCell.currentValue)) {
+                        cell.possibleValues.remove(otherCell.currentValue)
+                        changed = true
+                    }
+                }
+            }
+            for (otherCell in box){
+                if (otherCell.currentValue != "_"){
+                    if(cell.possibleValues.contains(otherCell.currentValue)) {
+                        cell.possibleValues.remove(otherCell.currentValue)
+                        changed = true
+                    }
+                }
+            }
+        }
+
+        return changed
     }
 
     override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
     override fun updateCellValue(cell: Cell): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
-
-    //    override fun runStrategy(sudokuCells: MutableList<Cell>): Boolean {
-//        var changed = false
-//        for(cell in sudokuCells){
-//            if (cell.currentValue != "_"){
-//                cell.possibleValues.clear()
-//            }
-//            else {
-//                for (otherCell in getRow(sudokuCells, cell.rowIndex)){
-//                    if (otherCell.currentValue != "_"){
-//                        if(cell.possibleValues.contains(otherCell.currentValue)) {
-//                            cell.possibleValues.remove(otherCell.currentValue)
-//                            changed = true
-//                        }
-//                    }
-//                }
-//                for (otherCell in getCol(sudokuCells, cell.colIndex)){
-//                    if (otherCell.currentValue != "_"){
-//                        if(cell.possibleValues.contains(otherCell.currentValue)) {
-//                            cell.possibleValues.remove(otherCell.currentValue)
-//                            changed = true
-//                        }
-//                    }
-//                }
-//                for (otherCell in getBox(sudokuCells, cell.boxIndex)){
-//                    if (otherCell.currentValue != "_"){
-//                        if(cell.possibleValues.contains(otherCell.currentValue)) {
-//                            cell.possibleValues.remove(otherCell.currentValue)
-//                            changed = true
-//                        }
-//                    }
-//                }
-//            }
-//
-//        }
-//
-//        return changed
-//    }
 
 
 }
