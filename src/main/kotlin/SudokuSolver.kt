@@ -1,14 +1,10 @@
 import Parts.Cell
-//import Strategies.Duplicates
-//import Strategies.NumbersFoundElsewhere
-//import Strategies.OnlyOnePossibility
 import Strategies.*
 import java.io.File
 import java.util.ArrayDeque
 
 class SudokuSolver (_sudokuPuzzleFile: File){
     val sudokuPuzzleFile: File = _sudokuPuzzleFile
-//    var sudokuCells = mutableListOf<Cell>()
     var sudokuCells: MutableList<Cell>? = mutableListOf()
     var solutions = mutableListOf<Solution>()
     var sudokuDimension = 0
@@ -75,7 +71,7 @@ class SudokuSolver (_sudokuPuzzleFile: File){
         return solutions
     }
 
-    fun sudokuIsSolved(puzzle: MutableList<Cell>): Boolean {
+    private fun sudokuIsSolved(puzzle: MutableList<Cell>): Boolean {
         for (cell in puzzle){
             if (cell.currentValue == "_"){
                 return false
@@ -172,45 +168,5 @@ class SudokuSolver (_sudokuPuzzleFile: File){
 
         return forSomeGodForsakenReasonICantReturnInsideAForLoop
     }
-
-//    private fun getCellRow(sudoku: MutableList<Cell>, size: Int, neededRowIndex: Int): MutableList<Cell> {
-//
-//        var returnableRow = mutableListOf<Cell>()
-//
-//        for(cell in sudoku){
-//            if(cell.colIndex == neededRowIndex){
-//                returnableRow.add(cell)
-//            }
-//        }
-//
-//        return returnableRow
-//    }
-
-//    private fun getCellCol(sudoku: MutableList<Cell>, size: Int, neededColIndex: Int): MutableList<Cell> {
-//
-//        var returnableCol = mutableListOf<Cell>()
-//
-//        for(cell in sudoku){
-//            if(cell.colIndex == neededColIndex){
-//                returnableCol.add(cell)
-//            }
-//        }
-//
-//        return returnableCol
-//    }
-
-//    private fun getCellBox(sudoku: MutableList<Cell>, size: Int, neededBoxIndex: Int): MutableList<Cell> {
-//
-//        var returnableBox = mutableListOf<Cell>()
-//
-//        for(cell in sudoku){
-//            if (cell.boxIndex == neededBoxIndex){
-//                returnableBox.add(cell)
-//            }
-//        }
-//
-//        return returnableBox
-//    }
-
 
 }

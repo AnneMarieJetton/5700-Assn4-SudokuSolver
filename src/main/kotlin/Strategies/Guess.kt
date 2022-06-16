@@ -5,11 +5,11 @@ import SolveTemplate
 
 class Guess: SolveTemplate()  {
 
-    override fun getRow(sudokuCells: MutableList<Cell>, index: Int): MutableList<Cell> {
+    override fun getRow(sudokuCells: MutableList<Cell>, rowIndex: Int): MutableList<Cell> {
         var returnableRow = mutableListOf<Cell>()
 
         for(cell in sudokuCells){
-            if(cell.colIndex == index){
+            if(cell.colIndex == rowIndex){
                 returnableRow.add(cell)
             }
         }
@@ -17,11 +17,11 @@ class Guess: SolveTemplate()  {
         return returnableRow
     }
 
-    override fun getCol(sudokuCells: MutableList<Cell>, index: Int): MutableList<Cell> {
+    override fun getCol(sudokuCells: MutableList<Cell>, colIndex: Int): MutableList<Cell> {
         var returnableCol = mutableListOf<Cell>()
 
         for(cell in sudokuCells){
-            if(cell.colIndex == index){
+            if(cell.colIndex == colIndex){
                 returnableCol.add(cell)
             }
         }
@@ -29,11 +29,11 @@ class Guess: SolveTemplate()  {
         return returnableCol
     }
 
-    override fun getBox(sudokuCells: MutableList<Cell>, index: Int): MutableList<Cell> {
+    override fun getBox(sudokuCells: MutableList<Cell>, boxIndex: Int): MutableList<Cell> {
         var returnableBox = mutableListOf<Cell>()
 
         for(cell in sudokuCells){
-            if (cell.boxIndex == index){
+            if (cell.boxIndex == boxIndex){
                 returnableBox.add(cell)
             }
         }

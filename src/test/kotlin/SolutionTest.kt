@@ -1,9 +1,34 @@
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-internal class SolutionTest{
+import org.junit.jupiter.api.Assertions.*
+
+internal class SolutionTest {
+
     @Test
-    fun bogus(){
-        assertEquals(1, 1)
+    fun getSudokuSolution() {
+    }
+
+    @Test
+    fun getStrategyCount() {
+    }
+
+    @Test
+    fun setStrategyCount() {
+    }
+
+    @Test
+    fun getSudokuSolutionPrintable() {
+    }
+
+    @Test
+    fun setSudokuSolutionPrintable() {
+    }
+
+    @Test
+    fun getStrategyCountPrintable() {
+    }
+
+    @Test
+    fun setStrategyCountPrintable() {
     }
 }
