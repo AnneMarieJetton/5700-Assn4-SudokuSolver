@@ -50,20 +50,15 @@ class OnlyOnePossibility: SolveTemplate() {
     }
 
     override fun updateCellValue(cell: Cell): Boolean {
-        TODO("Not yet implemented")
-    }
+        var changed = false
 
-//    override fun runStrategy(sudokuCells: MutableList<Cell>): Boolean {
-//        var changed = false
-//
-//        for(cell in sudokuCells){
-//            if(cell.possibleValues.size == 1){
-//                cell.currentValue = cell.possibleValues[0]
-//                cell.possibleValues.clear()
-//                changed = true
-//            }
-//        }
-//        return changed
-//    }
+        if(cell.possibleValues.size == 1){
+            cell.currentValue = cell.possibleValues[0]
+            cell.possibleValues.clear()
+            changed = true
+        }
+
+        return changed
+    }
 
 }

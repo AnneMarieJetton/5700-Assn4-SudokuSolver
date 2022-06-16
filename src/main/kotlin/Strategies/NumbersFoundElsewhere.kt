@@ -82,7 +82,15 @@ class NumbersFoundElsewhere: SolveTemplate()  {
     }
 
     override fun updateCellValue(cell: Cell): Boolean {
-        return false
+        var changed = false
+
+        if(cell.possibleValues.size == 1){
+            cell.currentValue = cell.possibleValues[0]
+            cell.possibleValues.clear()
+            changed = true
+        }
+
+        return changed
     }
 
 
