@@ -42,20 +42,22 @@ class Guess: SolveTemplate()  {
     }
 
     override fun updateCellOptions(cell: Cell, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
-        TODO("Not yet implemented")
+        return false
     }
 
-    override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>): Boolean {
-        TODO("Not yet implemented")
+    override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
+        return false
     }
 
     override fun updateCellValue(cell: Cell): Boolean {
-        TODO("Not yet implemented")
-    }
+        var changed = false
 
-//    override fun runStrategy(sudokuCells: MutableList<Cell>): Boolean {
-//
-//        return false
-//    }
+        if (!cell.possibleValues.isEmpty()){
+            cell.currentValue = cell.possibleValues[0]
+            cell.possibleValues.remove(cell.currentValue)
+        }
+
+        return changed
+    }
 
 }

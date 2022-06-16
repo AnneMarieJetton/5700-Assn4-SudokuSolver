@@ -45,7 +45,7 @@ class OnlyOnePossibility: SolveTemplate() {
         TODO("Not yet implemented")
     }
 
-    override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>): Boolean {
+    override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
         TODO("Not yet implemented")
     }
 

@@ -44,7 +44,7 @@ class NumbersFoundElsewhere: SolveTemplate()  {
     override fun updateCellOptions(cell: Cell, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
         var changed = false
 
-        if (cell.currentValue != "_"){
+        if (cell.initialValue != "_"){
             cell.possibleValues.clear()
         }
         else {
@@ -77,7 +77,7 @@ class NumbersFoundElsewhere: SolveTemplate()  {
         return changed
     }
 
-    override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>): Boolean {
+    override fun findDuplicates(cell: Cell, sudokuCells: MutableList<Cell>, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
         return false
     }
 
