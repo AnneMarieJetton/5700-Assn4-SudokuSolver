@@ -2,7 +2,7 @@ import java.io.File
 
 fun main(args: Array<String>) {
 
-    var file = File("shapes.txt")
+    var file = File("Puzzle-4x4-0001.txt")
 
     var sudokuSolver = SudokuSolver(file)
 

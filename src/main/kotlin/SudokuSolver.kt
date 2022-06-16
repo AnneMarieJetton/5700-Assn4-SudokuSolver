@@ -11,6 +11,7 @@ class SudokuSolver (_sudokuPuzzleFile: File){
     var strategyCount = mutableListOf<Int>()
 
     init {
+        setupStrategyCount()
         makeCells()
     }
 
@@ -73,7 +74,7 @@ class SudokuSolver (_sudokuPuzzleFile: File){
 
     private fun sudokuIsSolved(puzzle: MutableList<Cell>): Boolean {
         for (cell in puzzle){
-            if (cell.currentValue == "_"){
+            if (cell.currentValue == "-"){
                 return false
             }
         }
@@ -167,6 +168,13 @@ class SudokuSolver (_sudokuPuzzleFile: File){
         }
 
         return forSomeGodForsakenReasonICantReturnInsideAForLoop
+    }
+
+    private fun setupStrategyCount(){
+        strategyCount.add(0)
+        strategyCount.add(0)
+        strategyCount.add(0)
+        strategyCount.add(0)
     }
 
 }

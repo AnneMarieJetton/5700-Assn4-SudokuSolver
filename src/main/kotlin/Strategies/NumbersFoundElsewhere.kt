@@ -44,12 +44,12 @@ class NumbersFoundElsewhere: SolveTemplate()  {
     override fun updateCellOptions(cell: Cell, row: MutableList<Cell>, col: MutableList<Cell>, box: MutableList<Cell>): Boolean {
         var changed = false
 
-        if (cell.initialValue != "_"){
+        if (cell.initialValue != "-"){
             cell.possibleValues.clear()
         }
         else {
             for (otherCell in row){
-                if (otherCell.currentValue != "_"){
+                if (otherCell.currentValue != "-"){
                     if(cell.possibleValues.contains(otherCell.currentValue)) {
                         cell.possibleValues.remove(otherCell.currentValue)
                         changed = true
@@ -57,7 +57,7 @@ class NumbersFoundElsewhere: SolveTemplate()  {
                 }
             }
             for (otherCell in col){
-                if (otherCell.currentValue != "_"){
+                if (otherCell.currentValue != "-"){
                     if(cell.possibleValues.contains(otherCell.currentValue)) {
                         cell.possibleValues.remove(otherCell.currentValue)
                         changed = true
@@ -65,7 +65,7 @@ class NumbersFoundElsewhere: SolveTemplate()  {
                 }
             }
             for (otherCell in box){
-                if (otherCell.currentValue != "_"){
+                if (otherCell.currentValue != "-"){
                     if(cell.possibleValues.contains(otherCell.currentValue)) {
                         cell.possibleValues.remove(otherCell.currentValue)
                         changed = true

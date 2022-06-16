@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="SolutionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T21:52:11" hostname="ANNE-SENPAI" time="0.047">
+<testsuite name="SolutionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-16T05:35:28" hostname="ANNE-SENPAI" time="0.055">
   <properties/>
-  <testcase name="bogus()" classname="SolutionTest" time="0.047"/>
+  <testcase name="getSudokuSolution()" classname="SolutionTest" time="0.055"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
